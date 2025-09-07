@@ -1,4 +1,7 @@
 :root {
+  --white: #fff;
+  --black: #222;
+
   font-family:
     system-ui,
     -apple-system,
@@ -15,9 +18,8 @@
   line-height: 24px;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--white);
+  background-color: var(--black);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -52,14 +54,15 @@ body {
 }
 
 .board h1 {
-  color: #eee;
+  color: var(--white);
   margin-bottom: 16px;
 }
 
 .board button {
+  color: var(--white);
   transition:
-    background 0.2s,
-    color 0.2s;
+    background 0.3s,
+    color 0.3s;
 }
 
 .board button:disabled:not(.square) {
@@ -69,15 +72,15 @@ body {
 
 .board button:disabled:hover {
   background: transparent;
-  color: #eee;
+  color: var(--white);
 }
 
 .board button:not(.square) {
   padding: 8px 12px;
   margin: 25px;
   background: transparent;
-  border: 2px solid #eee;
-  color: #eee;
+  border: 2px solid var(--white);
+  color: var(--white);
   width: 100px;
   border-radius: 5px;
   transition: 0.2s;
@@ -86,8 +89,8 @@ body {
 }
 
 .board button:hover {
-  background: #eee;
-  color: #222;
+  background: var(--white);
+  color: var(--black);
 }
 
 .board .game {
@@ -98,6 +101,7 @@ body {
 
 .turn {
   display: flex;
+  column-gap: 8px;
   justify-content: center;
   margin: 15px auto;
   width: fit-content;
@@ -114,8 +118,8 @@ body {
 }
 
 .square.is-selected {
-  color: #fff;
-  background: #09f;
+  color: var(--black);
+  background: var(--white);
 }
 
 .winner {
@@ -126,14 +130,14 @@ body {
   left: 0;
   display: grid;
   place-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background: var(--black);
 }
 
 .winner .text {
-  background: #111;
+  background: var(--black);
   height: 300px;
   width: 320px;
-  border: 2px solid #eee;
+  border: 2px solid var(--white);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -154,7 +158,7 @@ body {
   background: none;
   width: 100px;
   height: 100px;
-  border: 2px solid #eee;
+  border: 2px solid var(--white);
   border-radius: 5px;
   display: grid;
   place-items: center;
