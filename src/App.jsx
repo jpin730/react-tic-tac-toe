@@ -1,3 +1,4 @@
+import confetti from 'canvas-confetti'
 import { useState } from 'react'
 import Square from './components/Square'
 import { INITIAL_BOARD } from './consts/board'
@@ -44,6 +45,7 @@ const App = () => {
 
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
+      confetti()
       setWinner(newWinner)
       return
     }
