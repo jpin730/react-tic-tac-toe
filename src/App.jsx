@@ -1,6 +1,7 @@
 import confetti from 'canvas-confetti'
 import { useState } from 'react'
 import Square from './components/Square'
+import WinnerModal from './components/WinnerModal'
 import { INITIAL_BOARD } from './consts/board'
 import { PLAYERS } from './consts/players'
 import { checkEndGame } from './utils/check-end-game'
@@ -60,19 +61,7 @@ const App = () => {
         </Square>
       </section>
 
-      {winner !== null && (
-        <section className="winner">
-          <div className="text">
-            <h2>{winner ? 'Winner:' : 'Draw!'}</h2>
-            {winner && (
-              <header className="win">
-                <Square>{winner}</Square>
-              </header>
-            )}
-            <button onClick={resetGame}>Start Again</button>
-          </div>
-        </section>
-      )}
+      <WinnerModal winner={winner} resetGame={resetGame} />
     </main>
   )
 }
