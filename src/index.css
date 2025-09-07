@@ -56,6 +56,22 @@ body {
   margin-bottom: 16px;
 }
 
+.board button {
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.board button:disabled:not(.square) {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.board button:disabled:hover {
+  background: transparent;
+  color: #eee;
+}
+
 .board button:not(.square) {
   padding: 8px 12px;
   margin: 25px;
@@ -69,7 +85,7 @@ body {
   cursor: pointer;
 }
 
-.board button:hover:not(.square) {
+.board button:hover {
   background: #eee;
   color: #222;
 }

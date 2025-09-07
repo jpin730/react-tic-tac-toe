@@ -5,12 +5,15 @@ import WinnerModal from './components/WinnerModal'
 import { INITIAL_BOARD } from './consts/board'
 import { PLAYERS } from './consts/players'
 import { checkEndGame } from './utils/check-end-game'
+import { checkStartGame } from './utils/check-start-game'
 import { checkWinner } from './utils/check-winner'
 
 const App = () => {
   const [player, setPlayer] = useState(PLAYERS.X)
   const [board, setBoard] = useState(INITIAL_BOARD)
   const [winner, setWinner] = useState(null)
+
+  const isStartGame = checkStartGame(board)
 
   const resetGame = () => {
     setPlayer(PLAYERS.X)
@@ -43,6 +46,10 @@ const App = () => {
   return (
     <main className="board">
       <h1>Tic Tac Toe</h1>
+
+      <button onClick={resetGame} disabled={isStartGame}>
+        Start Again
+      </button>
 
       <section className="game">
         {board.map((value, index) => (
