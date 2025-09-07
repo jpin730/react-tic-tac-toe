@@ -5,7 +5,7 @@ A simple Tic Tac Toe game built with React.
 This app was created using Vite and React (JavaScript) through the command:
 
 ```bash
-npm create vite@latest react-tic-tac-toe -- --template react
+npm create vite@latest react-tic-tac-toe -- --template react-swc
 ```
 
 ## How to Run the App
