@@ -1,7 +1,7 @@
 import confetti from 'canvas-confetti'
 import { useState } from 'react'
 import Game from './components/Game'
-import Square from './components/Square'
+import Turn from './components/Turn'
 import WinnerModal from './components/WinnerModal'
 import { INITIAL_BOARD } from './consts/board'
 import { PLAYERS } from './consts/players'
@@ -54,14 +54,7 @@ const App = () => {
 
       <Game board={board} updateBoard={updateBoard} />
 
-      <section className="turn">
-        <Square disabled isSelected={player === PLAYERS.X}>
-          {PLAYERS.X}
-        </Square>
-        <Square disabled isSelected={player === PLAYERS.O}>
-          {PLAYERS.O}
-        </Square>
-      </section>
+      <Turn player={player} />
 
       <WinnerModal winner={winner} resetGame={resetGame} />
     </main>
