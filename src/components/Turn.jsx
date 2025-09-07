@@ -5,12 +5,8 @@ import Square from './Square'
 const Turn = ({ player }) => {
   return (
     <section className="turn">
-      <Square disabled isSelected={player === PLAYERS.X}>
-        {PLAYERS.X}
-      </Square>
-      <Square disabled isSelected={player === PLAYERS.O}>
-        {PLAYERS.O}
-      </Square>
+      <Square disabled value={PLAYERS.X} isSelected={player === PLAYERS.X} />
+      <Square disabled value={PLAYERS.O} isSelected={player === PLAYERS.O} />
     </section>
   )
 }

@@ -5,9 +5,7 @@ const Game = ({ board, updateBoard }) => {
   return (
     <section className="game">
       {board.map((value, index) => (
-        <Square key={index} index={index} updateBoard={updateBoard}>
-          <span>{value}</span>
-        </Square>
+        <Square key={index} index={index} value={value} updateBoard={updateBoard} />
       ))}
     </section>
   )

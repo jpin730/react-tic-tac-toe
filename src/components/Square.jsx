@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types'
+import { PLAYERS } from '../consts/players'
+import CircleSvg from '../svgs/CircleSvg'
+import CloseSvg from '../svgs/CloseSvg'
 
-const Square = ({ children, isSelected, disabled, updateBoard, index }) => {
+const Square = ({ disabled, index, isSelected, updateBoard, value }) => {
   const className = `square ${isSelected ? 'is-selected' : ''}`
 
   const handleClick = () => {
@@ -9,17 +12,17 @@ const Square = ({ children, isSelected, disabled, updateBoard, index }) => {
 
   return (
     <button className={className} onClick={handleClick} disabled={disabled}>
-      {children}
+      {value && (value === PLAYERS.X ? <CloseSvg /> : <CircleSvg />)}
     </button>
   )
 }
 
 Square.propTypes = {
-  children: PropTypes.node,
-  isSelected: PropTypes.bool,
   disabled: PropTypes.bool,
-  updateBoard: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
+  isSelected: PropTypes.bool,
+  updateBoard: PropTypes.func.isRequired,
+  value: PropTypes.string,
 }
 
 export default Square

@@ -12,7 +12,7 @@ const WinnerModal = ({ winner, resetGame }) => {
         <h2>{winnerText}</h2>
         {winner && (
           <header className="win">
-            <Square>{winner}</Square>
+            <Square value={winner} />
           </header>
         )}
         <button onClick={resetGame}>Start Again</button>
