@@ -3,34 +3,19 @@ import { useState } from 'react'
 import Square from './components/Square'
 import { INITIAL_BOARD } from './consts/board'
 import { PLAYERS } from './consts/players'
-import { WINNER_COMBOS } from './consts/winner-combos'
+import { checkEndGame } from './utils/check-end-game'
+import { checkWinner } from './utils/check-winner'
 
 const App = () => {
   const [player, setPlayer] = useState(PLAYERS.X)
   const [board, setBoard] = useState(INITIAL_BOARD)
   const [winner, setWinner] = useState(null)
 
-  const checkWinner = (boardToCheck) => {
-    for (const combo of WINNER_COMBOS) {
-      const [a, b, c] = combo
-      if (
-        boardToCheck[a] &&
-        boardToCheck[a] === boardToCheck[b] &&
-        boardToCheck[a] === boardToCheck[c]
-      ) {
-        return boardToCheck[a]
-      }
-    }
-    return null
-  }
-
   const resetGame = () => {
     setPlayer(PLAYERS.X)
     setBoard(INITIAL_BOARD)
     setWinner(null)
   }
-
-  const checkEndGame = (newBoard) => newBoard.every((value) => value !== null)
 
   const updateBoard = (index) => {
     const isEmpty = board[index] === null
