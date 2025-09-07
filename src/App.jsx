@@ -8,15 +8,21 @@ import { PLAYERS } from './consts/players'
 import { checkEndGame } from './utils/check-end-game'
 import { checkStartGame } from './utils/check-start-game'
 import { checkWinner } from './utils/check-winner'
+import { getStorageItem, removeStorageItems, setStorageItems } from './utils/storage'
 
 const App = () => {
-  const [player, setPlayer] = useState(PLAYERS.X)
-  const [board, setBoard] = useState(INITIAL_BOARD)
-  const [winner, setWinner] = useState(null)
+  const [player, setPlayer] = useState(() => getStorageItem('player') ?? PLAYERS.X)
+  const [board, setBoard] = useState(() => getStorageItem('board') ?? INITIAL_BOARD)
+  const [winner, setWinner] = useState(() => getStorageItem('winner'))
 
   const isStartGame = checkStartGame(board)
 
+  if (winner) {
+    confetti()
+  }
+
   const resetGame = () => {
+    removeStorageItems({ player, board, winner })
     setPlayer(PLAYERS.X)
     setBoard(INITIAL_BOARD)
     setWinner(null)
@@ -34,8 +40,10 @@ const App = () => {
     setPlayer(newPlayer)
 
     const newWinner = checkWinner(newBoard)
+
+    setStorageItems({ player: newPlayer, board: newBoard, winner: newWinner })
+
     if (newWinner) {
-      confetti()
       setWinner(newWinner)
       return
     }
