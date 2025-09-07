@@ -22,6 +22,12 @@ const App = () => {
     }
   }
 
+  const resetGame = () => {
+    setPlayer(PLAYERS.X)
+    setBoard(INITIAL_BOARD)
+    setWinner(null)
+  }
+
   const updateBoard = (index) => {
     const isEmpty = board[index] === null
     if (!isEmpty || winner) return
@@ -52,9 +58,27 @@ const App = () => {
       </section>
 
       <section className="turn">
-        <Square isSelected={player === PLAYERS.X}>{PLAYERS.X}</Square>
-        <Square isSelected={player === PLAYERS.O}>{PLAYERS.O}</Square>
+        <Square disabled isSelected={player === PLAYERS.X}>
+          {PLAYERS.X}
+        </Square>
+        <Square disabled isSelected={player === PLAYERS.O}>
+          {PLAYERS.O}
+        </Square>
       </section>
+
+      {winner !== null && (
+        <section className="winner">
+          <div className="text">
+            <h2>{winner ? 'Winner:' : 'Draw!'}</h2>
+            {winner && (
+              <header className="win">
+                <Square>{winner}</Square>
+              </header>
+            )}
+            <button onClick={resetGame}>Start Again</button>
+          </div>
+        </section>
+      )}
     </main>
   )
 }
