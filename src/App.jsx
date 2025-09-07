@@ -20,6 +20,7 @@ const App = () => {
         return boardToCheck[a]
       }
     }
+    return null
   }
 
   const resetGame = () => {
@@ -27,6 +28,8 @@ const App = () => {
     setBoard(INITIAL_BOARD)
     setWinner(null)
   }
+
+  const checkEndGame = (newBoard) => newBoard.every((value) => value !== null)
 
   const updateBoard = (index) => {
     const isEmpty = board[index] === null
@@ -42,6 +45,10 @@ const App = () => {
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
       setWinner(newWinner)
+      return
+    }
+    if (checkEndGame(newBoard)) {
+      setWinner(false)
     }
   }
 
