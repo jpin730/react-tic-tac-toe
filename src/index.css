@@ -41,8 +41,13 @@ body {
 }
 
 .board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   width: fit-content;
-  margin: 40px auto;
+  padding: 40px 0;
   text-align: center;
 }
 
@@ -51,7 +56,7 @@ body {
   margin-bottom: 16px;
 }
 
-.board button {
+.board button:not(.square) {
   padding: 8px 12px;
   margin: 25px;
   background: transparent;
@@ -64,7 +69,7 @@ body {
   cursor: pointer;
 }
 
-.board button:hover {
+.board button:hover:not(.square) {
   background: #eee;
   color: #222;
 }
@@ -130,6 +135,7 @@ body {
 }
 
 .square {
+  background: none;
   width: 100px;
   height: 100px;
   border: 2px solid #eee;
