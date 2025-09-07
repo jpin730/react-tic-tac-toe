@@ -8,7 +8,9 @@ import { PLAYERS } from './consts/players'
 import { checkEndGame } from './utils/check-end-game'
 import { checkStartGame } from './utils/check-start-game'
 import { checkWinner } from './utils/check-winner'
-import { getStorageItem, removeStorageItems, setStorageItems } from './utils/storage'
+import { getStorageItem } from './utils/get-storage-item'
+import { removeStorageItems } from './utils/remove-storage-item'
+import { setStorageItems } from './utils/set-storage-items'
 
 const App = () => {
   const [player, setPlayer] = useState(() => getStorageItem('player') ?? PLAYERS.X)
