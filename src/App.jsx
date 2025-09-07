@@ -1,5 +1,6 @@
 import confetti from 'canvas-confetti'
 import { useState } from 'react'
+import Game from './components/Game'
 import Square from './components/Square'
 import WinnerModal from './components/WinnerModal'
 import { INITIAL_BOARD } from './consts/board'
@@ -51,13 +52,7 @@ const App = () => {
         Start Again
       </button>
 
-      <section className="game">
-        {board.map((value, index) => (
-          <Square key={index} index={index} updateBoard={updateBoard}>
-            <span>{value}</span>
-          </Square>
-        ))}
-      </section>
+      <Game board={board} updateBoard={updateBoard} />
 
       <section className="turn">
         <Square disabled isSelected={player === PLAYERS.X}>
